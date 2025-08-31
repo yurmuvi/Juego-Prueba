@@ -1,0 +1,109 @@
+/* Base */
+* { box-sizing: border-box; }
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: #f0f0f0;
+  margin: 0;
+}
+h1 { margin: 16px 0 8px; }
+
+/* Botones / overlays */
+.btn {
+  display:inline-block; padding:12px 20px; border-radius:10px; border:2px solid #333;
+  background:#fff; cursor:pointer; font-weight:700;
+  box-shadow:0 4px 0 #333; transition:transform .06s ease, box-shadow .2s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(2px); box-shadow:0 2px 0 #333; }
+.btn.primary { background:#2ecc71; border-color:#2ecc71; color:#fff; box-shadow:0 4px 0 #239d57; }
+
+/* Overlay inicio */
+.overlay {
+  position: fixed; inset: 0; display:none; align-items:center; justify-content:center;
+  background: rgba(0,0,0,.35); z-index: 1000;
+}
+.overlay.visible { display:flex; }
+.overlay-box {
+  background:#fff; border:2px solid #333; border-radius:14px; padding:20px 24px;
+  width:min(520px, 92vw);
+}
+
+/* Juego */
+.game {
+  position: relative;
+  margin: 20px auto 10px;
+  width: 600px;
+  height: 200px;
+  background: #fff url("img/Fondo.jpg") center/cover no-repeat;
+  border: 2px solid #333;
+  overflow: hidden;
+}
+
+/* --- JUGADOR (OSO) más grande --- */
+#player {
+  position: absolute;
+  bottom: 0;
+  left: 50px;
+  width: 80px;
+  height: 80px;
+  background-image: url("img/Oso.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* 👇 Ajuste: empuja la textura 10px hacia abajo para eliminar “flotación” */
+  background-position: center calc(100% + 10px);
+  transform-origin: bottom center;
+}
+
+/* --- OBSTÁCULO (ROCA) más pequeño --- */
+#obstacle {
+  position: absolute;
+  bottom: 0;
+  right: -50px;
+  width: 50px;
+  height: 50px;
+  background-image: url("img/Roca.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  animation: moveObstacle 2s linear infinite;
+}
+@keyframes moveObstacle {
+  from { right: -50px; }
+  to   { right: 100%; }
+}
+
+/* --- CUEVA --- */
+#cave {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: url("img/Cueva.png") bottom center / contain no-repeat;
+  display: none;
+}
+
+/* --- SALTO --- */
+.jump { animation: jump 0.55s ease; }
+@keyframes jump {
+  0%   { bottom: 0; }
+  50%  { bottom: 120px; }
+  100% { bottom: 0; }
+}
+
+/* Controles móviles (debajo del juego) */
+.controls {
+  display:flex; gap:12px; justify-content:center; align-items:center;
+  margin: 6px auto 20px;
+}
+.ctrl {
+  width:90px; height:50px; border:2px solid #333; border-radius:10px;
+  background:#fff; font-size:22px; font-weight:700;
+  touch-action: manipulation;
+}
+
+/* 🔒 Ocultar controles en escritorio (≥800px) */
+@media (min-width: 800px) {
+  .controls { display:none; }
+}
