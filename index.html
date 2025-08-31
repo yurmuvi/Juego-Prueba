@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego Dinosaurio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Pantalla de inicio -->
+  <div id="startScreen" class="overlay visible">
+    <div class="overlay-box">
+      <h1>Juego estilo Dinosaurio 🐻</h1>
+      <p>Mover: ← → · Saltar: ESPACIO</p>
+      <p>En móvil: botones de abajo</p>
+      <button id="playBtn" class="btn primary">JUGAR</button>
+    </div>
+  </div>
+
+  <h1>Juego estilo Dinosaurio 🦖</h1>
+
+  <div class="game" id="gameArea">
+    <div id="player"></div>
+    <div id="obstacle"></div>
+    <div id="cave"></div>
+  </div>
+
+  <!-- Controles móviles (debajo del juego, ocultos en escritorio) -->
+  <div class="controls">
+    <button id="btnLeft"  class="ctrl">◀︎</button>
+    <button id="btnJump"  class="ctrl">⏫</button>
+    <button id="btnRight" class="ctrl">▶︎</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
