@@ -92,9 +92,10 @@ h1 { margin: 16px 0 8px; }
   100% { bottom: 0; }
 }
 
-/* Controles móviles (debajo del juego) */
+/* Controles táctiles (debajo del juego) */
+/* Por defecto se ocultan; se mostrarán en dispositivos táctiles */
 .controls {
-  display:flex; gap:12px; justify-content:center; align-items:center;
+  display:none; gap:12px; justify-content:center; align-items:center;
   margin: 6px auto 20px;
 }
 .ctrl {
@@ -103,7 +104,7 @@ h1 { margin: 16px 0 8px; }
   touch-action: manipulation;
 }
 
-/* 🔒 Ocultar controles en escritorio (≥800px) */
-@media (min-width: 800px) {
-  .controls { display:none; }
+/* Mostrar controles solo en dispositivos con puntero grueso (móvil/tablet) */
+@media (hover: none) and (pointer: coarse) {
+  .controls { display:flex; }
 }
